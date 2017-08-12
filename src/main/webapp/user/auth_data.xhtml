@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsf/core"
+                template="./../templates/MainTemplate.xhtml">
+    
+    <ui:define name="top">
+        <ui:include src="../templates/MenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    
+    <ui:define name="submenu">
+        <ui:include src="../templates/SubMenuTemplate.xhtml"></ui:include>
+    </ui:define>
+
+    <ui:define name="content">
+        <table style="float: left">
+            <tr>
+                <td>
+                    <h2 class="nice_form_header">Twoje dane autoryzacji</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h:form>
+                    <table>
+                        <tr>
+                            <td>
+                        Login:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="right_side_input"><h:outputText value="#{loginBean.login}" /></span>
+                            </td>
+                        </tr>            
+                        <tr>
+                            <td>
+                        E-mail:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      
+                        <span class="right_side_input"><h:outputText value="#{modifyMyUserPageBean.user.email}" /></span>
+                            </td>
+                        </tr> 
+                        <tr>
+                            <td>
+                        Aktualne hasło:&nbsp;&nbsp;&nbsp;<span class="right_side_input"><h:outputText value="********" /></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h:commandButton value="Wprowadź nowe dane" action="editAuthData" />
+                            </td>
+                        </tr>
+                    </table>
+            </h:form>
+                </td>
+            </tr>
+        </table>
+        <table style="float: right">
+            <tr>
+                <td>
+                    <ui:include src="../templates/WorkerRightBoxTemplate.xhtml"></ui:include>
+                </td>
+            </tr>
+        </table>
+</ui:define>
+    
+    <ui:define name="footer">
+        <ui:include src="../templates/FooterTemplate.xhtml"></ui:include>
+    </ui:define>
+
+</ui:composition>

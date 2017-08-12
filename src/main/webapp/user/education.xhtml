@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsf/core"
+                template="./../templates/MainTemplate.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsp/jstl/core">
+    
+    <ui:define name="top">
+        <ui:include src="../templates/MenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    
+    <ui:define name="submenu">
+        <ui:include src="../templates/SubMenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    
+    <ui:define name="content">
+        <table style="float: left">
+            <tr>
+                <td>
+                    <h2 class="nice_form_header">Edukacja</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h:form>
+                            <h:dataTable value="#{qualificationsPageBean.myUser.qualificationsCollection}" var="qual" >
+                                <h:column>
+                                <c:facet name="header">Języki programowania:</c:facet>
+                                    #{qual.programmingLanguage}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Frameworki:</c:facet>
+                                    #{qual.frameworks}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Języki obce:</c:facet>
+                                    #{qual.foreignLanguages}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Znajomość oprogramowania:</c:facet>
+                                    #{qual.software}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Pozostałe umiejętności:</c:facet>
+                                    #{qual.otherSkills}
+                            </h:column>
+                            </h:dataTable>
+                        <h:commandButton style="margin: 5px 0px 5px 5px" value="Wprowadź nowe dane" action="editEdu"/>       
+                    </h:form>
+                </td>
+            </tr>
+        </table>
+        <table id="right">
+            <tr>
+                <td>
+                    <ui:include src="../templates/WorkerRightBoxTemplate.xhtml"></ui:include>
+                </td>
+            </tr>
+        </table>    
+    </ui:define>
+    
+    <ui:define name="footer">
+        <ui:include src="../templates/FooterTemplate.xhtml"></ui:include>
+    </ui:define>
+
+</ui:composition>

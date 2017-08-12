@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsf/core"
+                template="./../templates/MainTemplate.xhtml">
+    
+    <ui:define name="top">
+        <ui:include src="../templates/MenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    
+    <ui:define name="submenu">
+        <ui:include src="../templates/SubMenuTemplate.xhtml"></ui:include>
+    </ui:define>
+
+    <ui:define name="content">
+                <h:form style="float: left">
+                   <table>
+                        <tr>
+                            <td>
+                                <h2 class="nice_form_header">Edycja danych użytkownika</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                        Login:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="right_side_input"><h:outputText value="#{loginBean.login}" /></span>
+                            </td>
+                        </tr>            
+                        <tr>
+                            <td>      
+                        E-mail:<h:inputText id="mod_e_mail" value="#{modifyMyUserPageBean.user.email}">
+                                    <c:validateLength minimum="7" maximum="40" />
+                                </h:inputText>
+                            </td>
+                            <td class="no_more_style, error_message">
+                                <h:message for="mod_e_mail" />
+                            </td>
+                        </tr> 
+                        <tr>
+                            <td>
+                                Aktualne hasło:&nbsp;&nbsp;&nbsp;<span class="right_side_input"><h:outputText value="********" /></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                        <span class="star">*</span>  
+                        Nowe hasło: <h:inputSecret id="mod_new_pass" value="#{modifyMyUserPageBean.newPassword}">
+                                        <c:validateLength minimum="8" maximum="40" />
+                                    </h:inputSecret>
+                            </td>
+                            <td class="no_more_style, error_message">
+                                    <h:message for="mod_new_pass" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                        <span class="star">*</span>  
+                        Powtórz hasło:&nbsp;&nbsp;<h:inputSecret id="mod_new_pass_again" value="#{modifyMyUserPageBean.checkPassword}">
+                                           <c:validateLength minimum="8" maximum="40" />
+                                       </h:inputSecret>
+                            </td>
+                            <td class="no_more_style, error_message">
+                                    <h:message for="mod_new_pass_again" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h:commandButton value="Zatwierdź" action="#{modifyMyUserPageBean.modifyUser()}" />
+                                <h:commandButton value="Anuluj"  action="main" immediate="true"/>
+                            </td>
+                            <td class="no_more_style, error_message">
+                                <h:messages for="" />
+                            </td>
+                        </tr>
+                    </table>          
+                </h:form>
+                <table style="float: right">
+                        <tr>
+                            <td>
+                                <ui:include src="../templates/WorkerRightBoxTemplate.xhtml"></ui:include>
+                            </td>
+                        </tr>
+                </table>
+</ui:define>
+    
+    <ui:define name="footer">
+        <ui:include src="../templates/FooterTemplate.xhtml"></ui:include>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon" type="image/x-icon" href="./../resources/images/favicon.ico"/>
+        <h:outputStylesheet name="./css/reset.css" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet name="./css/cssDecoration.css" />
+        <h:outputStylesheet name="./css/font-face.css" /> 
+        <title>SEKP 1.0</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">Top z MainTamplate.xhtml</ui:insert>
+        </div>
+        
+        <div id="submenu">
+            <ui:insert name="submenu">Submenu z MainTamplate.xhtml</ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content z MainTamplate.xhtml</ui:insert>
+        </div>
+
+        <div id="footer">
+            <ui:insert name="footer">Footer z MainTamplate.xhtml</ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsf/core"
+                template="./../templates/MainTemplate.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions">
+
+    <ui:define name="top">
+        <ui:include src="../templates/MenuTemplate.xhtml"></ui:include>
+    </ui:define>
+
+    <ui:define name="submenu">
+        <ui:include src="../templates/SubMenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    <ui:define name="content">
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <h2 class="nice_form_header">Ukończone szkolenia: pogląd i edycja</h2>
+                        </td>
+                    </tr>
+                </table>
+                <ui:include src="../templates/WorkerInlineBoxTemplate.xhtml"></ui:include>
+                <h:form>
+                    <table class="color_table" style="float: left">
+                    <tr>
+                        <td>
+                            Początek szkolenia :<br />
+                            <span style="font-size: 11px; color: red">(format: dd.MM.yyyy)</span>
+                        </td>
+                          <td>
+                              <h:inputText id="begin_train" value="#{trainingsPageBean.trainingBegin}" >
+                                   <f:convertDateTime dateStyle="short" pattern="dd.MM.yyyy"/>
+                              </h:inputText>
+                          </td>
+                    </tr>
+                    <tr>
+                          <td>
+                              Zakończenie szkolenia :<br />
+                              <span style="font-size: 11px; color: red">(format: dd.MM.yyyy)</span>
+                          </td>
+                          <td>
+                              <h:inputText id="end_train" value="#{trainingsPageBean.trainingEnd}" >
+                                  <f:convertDateTime dateStyle="short" pattern="dd.MM.yyyy"/>
+                              </h:inputText>
+                          </td>
+                    </tr>
+                    <tr>
+                          <td>Zakres szkolenia :<br />
+                              <span style="font-size: 11px; color: red">(tematyka, główne zagadnienia)</span>
+                          
+                          </td>
+                        <td>
+                            <h:inputText id="content_train" value="#{trainingsPageBean.contentTraining}">
+                                <c:validateLength minimum="5" maximum="512" />
+                            </h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                          <td>Czas szkolenia :<br />
+                              <span style="font-size: 11px; color: red">(ilość godzin)</span>
+                          
+                          </td>
+                          <td>
+                              <h:inputText id="time_train" value="#{trainingsPageBean.trainingTime}" >
+                                  <c:validateLength minimum="1" maximum="4" />
+                              </h:inputText>
+                          </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <h:commandButton value="Dodaj" action="#{trainingsPageBean.addTraining()}" />
+                            <h:commandButton value="Wyczyść" action="editTrainings" />
+                        </td>
+                    </tr>
+                    <tr style="border: none">
+                        <td colspan="2" style="border: none" class="no_more_style, error_message">
+                            <h:message for="begin_train" errorStyle="color: red"/><br />
+                            <h:message for="end_train" errorStyle="color: red"/><br />
+                            <h:message for="content_train" errorStyle="color: red" /><br />
+                            <h:message for="time_train" errorStyle="color: red" />
+                        </td>
+                    </tr>    
+                    </table>	  
+                </h:form>
+                <h:form>
+                    <h:dataTable style="float: right" value="#{trainingsPageBean.trainingsCollection}" var="train">
+                            <h:column>
+                                <c:facet name="header">Początek szkolenia</c:facet>
+                                    #{of:formatDate(train.trainingBegin, 'dd.MM.yyyy')}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Zakończenie szkolenia</c:facet>
+                                    #{of:formatDate(train.trainingEnd, 'dd.MM.yyyy')}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Zakres szkolenia</c:facet>
+                                    #{train.contentTraining}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Czas szkolenia</c:facet>
+                                    #{train.trainingTime}
+                           </h:column>
+                           <h:column>
+                                    <c:facet name="header">Usuń</c:facet>
+                                    <h:commandButton action="#{trainingsPageBean.deleteTrainings()}" value="X" />
+                           </h:column>
+                    </h:dataTable>
+                </h:form>
+    </ui:define>
+    <ui:define name="footer">
+        <ui:include src="../templates/FooterTemplate.xhtml"></ui:include>
+    </ui:define>
+
+</ui:composition>

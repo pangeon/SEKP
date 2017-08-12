@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsf/core"
+                template="./../templates/MainTemplate.xhtml"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions"
+                >
+    
+    <ui:define name="top">
+        <ui:include src="../templates/MenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    
+    <ui:define name="submenu">
+        <ui:include src="../templates/SubMenuTemplate.xhtml"></ui:include>
+    </ui:define>
+
+    <ui:define name="content">
+        <h2 class="nice_form_header_view">Wyszukiwanie zaawansowane - dane wszystkich pracowników</h2>
+                
+        <h:form>
+            <div style="float: left; width: 600px;">
+                <h1 style="margin-left: 5px;">Wyniki wyszukiwania - historia pracy</h1>
+                <h:dataTable value="#{historyWorkPageBean.allHistoryWorkList}" var="hist_work">
+                        <h:column>
+                            <c:facet name="header">Początek zatrudnienia</c:facet>
+                            #{of:formatDate(hist_work.workBegin, 'dd.MM.yyyy')}
+                        </h:column>
+                        <h:column>
+                            <c:facet name="header">Koniec zatrudnienia</c:facet>
+                            #{of:formatDate(hist_work.workEnd, 'dd.MM.yyyy')}
+                        </h:column>
+                        <h:column>
+                            <c:facet name="header">Miejsce wykonywanej pracy</c:facet>
+                            #{hist_work.company}
+                        </h:column>    
+                        <h:column>
+                            <c:facet name="header">Stanowisko</c:facet>
+                            #{hist_work.position}
+                        </h:column>
+                        <h:column>
+                            <c:facet name="header">Rodzaj wykonywanej pracy</c:facet>
+                            #{hist_work.characterOfWork}
+                        </h:column>
+                        <h:column>
+                            <c:facet name="header">Nabyte umiejętności</c:facet>
+                            #{hist_work.acquiredSkills}
+                        </h:column>
+                        <h:column> 
+                            <c:facet name="header">Akcje</c:facet>
+                            <h:commandButton value="Strona użytkownika" action="#{historyWorkPageBean.showUser()}" />
+                        </h:column>
+                </h:dataTable>
+                <h1 style="margin-left: 5px; margin-top: 10px;">Wyniki wyszukiwania - edukacja</h1>
+                <h:dataTable value="#{educationPageBean.allEducationList}" var="edu">
+                        <h:column>
+                            <c:facet name="header">Początek nauki</c:facet>
+                            #{of:formatDate(edu.educationBegin, 'dd.MM.yyyy')}
+                        </h:column>
+                        <h:column>
+                            <c:facet name="header">Zakończenie nauki</c:facet>
+                            #{of:formatDate(edu.educationEnd, 'dd.MM.yyyy')}
+                        </h:column>
+                        <h:column>
+                            <c:facet name="header">Nazwa uczelni</c:facet>
+                            #{edu.nameOfSchool}
+                        </h:column>    
+                        <h:column>
+                            <c:facet name="header">Rodzaj uczelni</c:facet>
+                            #{edu.kindOfSchool}
+                        </h:column>
+                        <h:column>
+                            <c:facet name="header">Specjalizacja</c:facet>
+                            #{edu.specialization}
+                        </h:column>
+                        <h:column> 
+                            <c:facet name="header">Akcje</c:facet>
+                            <h:commandButton value="Strona użytkownika" action="#{educationPageBean.showUser()}" />
+                        </h:column>
+                </h:dataTable>
+
+                <h1 style="margin-left: 5px; margin-top: 10px;">Wyniki wyszukiwania - ukończone szkolenia</h1>
+                <h:dataTable value="#{trainingsPageBean.allTrainingsList}" var="train">
+                        <h:column>
+                            <c:facet name="header">Początek szkolenia</c:facet>
+                            #{of:formatDate(train.trainingBegin, 'dd.MM.yyyy')}
+                        </h:column>
+                        <h:column>
+                            <c:facet name="header">Koniec szkolenia</c:facet>
+                            #{of:formatDate(train.trainingEnd, 'dd.MM.yyyy')}
+                        </h:column>
+                        <h:column>
+                            <c:facet name="header">Zakres szkolenia</c:facet>
+                            #{train.contentTraining}
+                        </h:column>    
+                        <h:column>
+                            <c:facet name="header">Czas szkolenia</c:facet>
+                            #{train.trainingTime}
+                        </h:column>
+                        <h:column> 
+                            <c:facet name="header">Akcje</c:facet>
+                            <h:commandButton value="Strona użytkownika" action="#{trainingsPageBean.showUser()}" />
+                        </h:column>
+                    </h:dataTable>
+                    
+                    <h1 style="margin-left: 5px; margin-top: 10px;">Wyniki wyszukiwania - kwalifikacje</h1>
+                    <h:dataTable value="#{qualificationsPageBean.allQualificationsList}" var="qual">
+                        <h:column>
+                            <c:facet name="header">Język programowania</c:facet>
+                            #{qual.programmingLanguage}
+                        </h:column>
+                        <h:column>
+                            <c:facet name="header">Frameworki</c:facet>
+                            #{qual.frameworks}
+                        </h:column>
+                        <h:column>
+                            <c:facet name="header">Języki obce</c:facet>
+                            #{qual.foreignLanguages}
+                        </h:column>    
+                        <h:column>
+                            <c:facet name="header">Oprogramowanie narzędziowe</c:facet>
+                            #{qual.software}
+                        </h:column>
+                        <h:column>
+                            <c:facet name="header">Dodatkowe umiejętności</c:facet>
+                            #{qual.otherSkills}
+                        </h:column>
+                        <h:column> 
+                            <c:facet name="header">Akcje</c:facet>
+                            <h:commandButton value="Strona użytkownika" action="#{qualificationsPageBean.showUser()}" />
+                        </h:column>
+                    </h:dataTable>
+                </div>
+                
+                <div style="float: right; width: 400px; border-left: 1px solid red; border-right: 1px solid red;
+                     border-bottom: 1px solid red">
+
+                    <h1 style="margin-left: 4px;">Filtrowanie - historia pracy</h1>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Szukaj według miejsca odbywania pracy:" />
+                        <h:inputText id="companyPattern" value="#{historyWorkPageBean.companyPattern}" />
+                        <h:outputLabel value="Szukaj po stanowisku:" />
+                        <h:inputText id="positionPattern" value="#{historyWorkPageBean.positionPattern}" />
+                        <h:outputLabel value="Szukaj po dodatkowych umiejętnościach:" />
+                        <h:inputText id="aquiredSkillsPattern" value="#{historyWorkPageBean.aquiredSkillsPattern}" />
+                        <h:commandButton value="Filtruj" action="#{historyWorkPageBean.search()}" />
+                        <h:commandButton value="Wyczyść" action="#{historyWorkPageBean.clean()}" />
+                    </h:panelGrid>
+                    <hr />
+                    <h1 style="margin-left: 4px;">Filtrowanie - edukacja</h1>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Szukaj po nazwie uczelni:" />
+                        <h:inputText id="nameOfSchoolPattern" value="#{educationPageBean.nameOfSchoolPattern}" />
+                        <h:outputLabel value="Szukaj po rodzaju uczelni:" />
+                        <h:inputText id="kindOfSchoolPattern" value="#{educationPageBean.kindOfSchoolPattern}" />
+                        <h:outputLabel value="Szukaj po specjalizacji:" />
+                        <h:inputText id="specializationPattern" value="#{educationPageBean.specializationPattern}" />
+                        <h:commandButton value="Filtruj" action="#{educationPageBean.search()}" />
+                        <h:commandButton value="Wyczyść" action="#{educationPageBean.clean()}" />
+                    </h:panelGrid>
+                    <hr />
+                    <h1 style="margin-left: 4px;">Filtrowanie - szkolenia</h1>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Szukaj po zawartości szkolenia:" />
+                        <h:inputText id="contentTrainingPatttern" value="#{trainingsPageBean.contentTrainingPattern}" />
+                        <h:commandButton value="Filtruj" action="#{trainingsPageBean.search()}" />
+                        <h:commandButton value="Wyczyść" action="#{trainingsPageBean.clean()}" />
+                    </h:panelGrid>
+                    <hr />
+                    <h1 style="margin-left: 4px;">Filtrowanie - kwalifikacje</h1>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Szukaj po jęzuku programowania:" />
+                        <h:inputText id="progLanguagePattern" value="#{qualificationsPageBean.progLanguagePattern}" />
+                        <h:outputLabel value="Szukaj po znajomości frameworku:" />
+                        <h:inputText id="frameworkPattern" value="#{qualificationsPageBean.frameworkPattern}" />
+                        <h:outputLabel value="Szukaj po znajomości języka obcego:" />
+                        <h:inputText id="foreignLanguagePattern" value="#{qualificationsPageBean.foreignLanguagePattern}" />
+                        <h:outputLabel value="Szukaj po znajomości narzędzi" />
+                        <h:inputText id="softwarePattern" value="#{qualificationsPageBean.softwarePattern}" />
+                        <h:commandButton value="Filtruj" action="#{qualificationsPageBean.search()}" />
+                        <h:commandButton value="Wyczyść" action="#{qualificationsPageBean.clean()}" />  
+                    </h:panelGrid>
+                    <hr />
+                    <h:panelGrid columns="1">
+                    <h:commandButton value="Filtuj wszystkie tabele" action="#{bigListPageBean.search()}" />
+                    </h:panelGrid>
+                </div>
+        </h:form>
+    </ui:define>
+    
+    
+    <ui:define name="footer">
+        <ui:include src="../templates/FooterTemplate.xhtml"></ui:include>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsf/core"
+                template="./../templates/MainTemplate.xhtml">
+    
+    <ui:define name="top">
+        <ui:include src="../templates/MenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    
+    <ui:define name="submenu">
+        <ui:include src="../templates/SubMenuTemplate.xhtml"></ui:include>
+    </ui:define>
+
+    <ui:define name="content">
+        <h2 class="nice_form_header_view">Lista pracowników</h2>
+        <h:form>
+            <h:dataTable style="float: left" value="#{userListPageBean.usersList}" var="users">
+                    <h:column>
+                        <c:facet name="header">Imię</c:facet>
+                        #{users.firstName}
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Nazwisko</c:facet>
+                        #{users.lastName}
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Identyfikator (nick)</c:facet>
+                        #{users.nickName}
+                    </h:column>    
+                    <h:column>
+                        <c:facet name="header">E-mail</c:facet>
+                        #{users.email}
+                    </h:column>
+                    <h:column> 
+                        <c:facet name="header">Akcje</c:facet>
+                        <h:commandButton value="Szczegółowe dane" action="#{userListPageBean.showUser()}" />
+                    </h:column>
+                </h:dataTable>
+                <h:panelGrid style="float: right" columns="2">
+                    <h:outputLabel value="Szukaj po imieniu:" />
+                    <h:inputText id="firstNamePatttern" value="#{userListPageBean.firstNamePattern}" />
+                    <h:outputLabel value="Szukaj po nazwisku:" />
+                    <h:inputText id="lastNamePatttern" value="#{userListPageBean.lastNamePattern}" />
+                    <h:outputLabel value="Szukaj po idetyfikatorze:"/>
+                    <h:inputText id="nickPatttern" value="#{userListPageBean.nickPattern}" />
+                    <h:outputLabel value="Szukaj po emailu:" />
+                    <h:inputText id="emailPatttern" value="#{userListPageBean.emailPattern}" />
+                    <h:commandButton value="Filtruj" action="#{userListPageBean.search()}" />
+                    <h:commandButton value="Wyczyść" action="#{userListPageBean.clean()}" />
+                    <h:commandButton value="Wyszukiwanie zaawansowane" action="#{userListPageBean.advanceSearch()}" />
+                </h:panelGrid>
+        </h:form>
+    </ui:define>
+    
+    
+    <ui:define name="footer">
+        <ui:include src="../templates/FooterTemplate.xhtml"></ui:include>
+    </ui:define>
+
+</ui:composition>

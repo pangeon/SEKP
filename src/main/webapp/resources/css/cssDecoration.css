@@ -1,0 +1,261 @@
+/*
+Wzbogacenie i poprawa wyglądu 
+/* 
+    Created on : 2015-09-09, 14:44:20
+    Author     : Kamil Cecherz
+*/
+
+p {
+    font-size: 14px;
+    font-family: 'ubuntulight';
+}
+h2 {
+   font-size: 16px;
+   font-weight: bolder;
+   font-family: 'ubuntulight'; 
+}
+.inline {
+    alignment-baseline: alphabetic;
+    display: inline-block;
+    padding: 8px;
+    background-color: #D20005;
+    border: 1px solid blue;
+    margin-left: 8px;
+    font-family: 'loveloblack';
+    color: white;
+    text-align: center;
+}
+
+#inline2 {
+    alignment-baseline: alphabetic;
+    display: block;
+    padding: 8px;
+    background-color: #D20005;
+    border: 1px solid blue;
+    margin: 0px;
+    font-family: 'loveloblack';
+    color: white;
+    text-align: center;
+}
+input 
+{
+    float: right;
+}
+td, tr 
+{
+    border: 4px solid #dddddd;
+    border-collapse: collapse;
+    padding: 5px;
+    background-color: #ffc;
+    vertical-align: bottom;
+    font-size: 14px;
+    font-family: 'ubuntulight';
+//    min-width: 130px;
+}
+th {
+    border: 4px solid #dddddd;
+    border-collapse: collapse;
+    padding: 5px;
+    background-color: #ffc;
+    vertical-align: bottom;
+    font-size: 12px;
+    font-family: 'loveloblack';
+}
+#confirm {
+    margin-left: 4px;
+    margin-top: 4px;
+    padding: 20px;
+    font-size: 16px;
+    font-family: 'ubuntulight';
+    background-color: pink;
+    width: 300px;
+    border: 1px solid red;
+}
+#content a {
+    display: block;
+    padding: 5px;
+    font-size: 14px;
+    font-family: 'ubuntulight';
+}
+.h2_error_message {
+    font-weight: bold;
+    font-family: 'ubuntulight';
+    font-size: 16px;
+    color: white;
+    background-color: red;
+    //padding: 5px;
+    text-align: center;
+    
+}
+.error_message {
+    //font-weight: bold;
+    font-family: 'ubuntulight';
+    font-size: 14px;
+    padding: 5px;
+    background: #dddddd;
+    color: red;
+}
+.star {
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'loveloblack';
+    color: red;
+}
+.no_more_style {
+    //border-buttom: 2px solid #dddddd;
+    padding: 0px;
+    background-color: #dddddd;
+}
+    
+.left_side_input {
+    float: left;
+    margin-right: 5px;
+}
+.right_side_input {
+    //float: right;
+    margin-left: 5px;
+}
+.addwhite {
+    color: white;
+}
+.reset_inline {
+    border: 1px dodgerblue; 
+    background-color: dodgerblue; 
+}
+#list_user {
+    float: left;
+}
+.http_error {
+    text-align: center;
+    line-height: 30px;
+    background-color: #ffc;
+    border: 1px solid red;
+    margin-left: 295px;
+    margin-right: 300px;
+}
+.http_login {
+    text-align: center;
+    line-height: 30px;
+    background-color: #ffc;
+    border: 1px solid forestgreen;
+    margin-left: 295px;
+    margin-right: 300px;
+}
+.info_logout {
+    text-align: center;
+    line-height: 20px;
+}
+.main_page {
+    font-family: 'loveloblack';
+    font-size: 20px;
+    padding: 0px;
+    background: #dddddd;
+    color: red;
+    text-align: center;
+}
+.main_page_content {
+    margin-left: 300px;
+    margin-right: 295px;
+}
+.main_page_paragraph {
+    font-size: 18px;
+    text-align: justify;
+    padding: 10px;
+}
+#sessionClock > span {
+    height: 13px;
+    width: 50px;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'loveloblack';
+}
+#sessionClock {
+    color: gold;
+    background-color: dodgerblue;
+    font-size: 13px;
+}
+iframe {
+    height: 11px;
+    width: 40px;
+    overflow: no-display;
+}
+span#min, span#sec {
+    font-family: 'ubuntulight';
+    font-size: 13px;
+}
+.nice_form_header {
+    font-family: 'loveloblack';
+    text-align: center;
+    font-size: 15px;
+    background-color: #ff9900;
+    color: white;
+    padding: 8px;
+    border: 1px solid red;
+}
+.nice_form_header_view {
+    font-family: 'loveloblack';
+    text-align: center;
+    font-size: 15px;
+    background-color: #ff9900;
+    color: white;
+    padding: 8px;
+    margin-left: 4px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    border: 1px solid red;
+    opacity: 0.7;
+}
+input, textarea {
+    font-family: 'ubuntulight';
+    font-size: 14px;
+}
+.buttom_form {
+    margin: 5px 0px 5px 5px;
+}
+table.color_table tr {
+    border-right: 1px solid grey;
+}
+table.color_table td {
+    border-right: 1px solid grey;
+}
+ul#inline_worker_box li {
+    display: inline;
+    padding: 8px 8px 8px 8px;
+    background-color: chocolate;
+    border: 1px solid #D20005;
+}
+ul#inline_worker_box li:hover {
+    display: inline;
+    padding: 8px 8px 8px 8px;
+    background-color: #ff9900;
+    border: 1px solid #D20005;
+}
+ul#inline_worker_box li a {
+    display: inline;
+    font-family: 'loveloblack'; 
+    font-size: 13px;
+    color: white;
+}
+ul#inline_worker_box li a:hover {
+    text-decoration: none;    
+}
+ul#inline_worker_box {
+    margin: 15px 5px 15px 0px;
+    text-align: right;
+}
+.error_com {
+    color: lawngreen; 
+    margin-left: 5px; 
+    font-size: 20px; 
+    font-family: Arial; 
+    text-align: center; 
+    padding: 10px; 
+    background: black;
+}
+strong {
+    font-family: 'loveloblack';
+    font-size: 15px;
+}
+
+
+

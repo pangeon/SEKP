@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsf/core"
+                template="./../templates/MainTemplate.xhtml">
+    
+    <ui:define name="top">
+        <ui:include src="../templates/MenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    
+    <ui:define name="submenu">
+        <ui:include src="../templates/SubMenuTemplate.xhtml"></ui:include>
+    </ui:define>
+
+    <ui:define name="content">
+        <h2 class="nice_form_header_view">Zmiana praw dostępu:</h2>
+        <h:form>
+                <table>
+                    <tr>
+                        <td class="star" style="font-family: 'ubuntulight'; font-weight: lighter">  
+                        Użytkownik:&nbsp;<h:outputText id="role_name" value="#{modifyUserPageBean.user.login}" />
+    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="padding-bottom: 3px;">Nadaj nową Rolę:</span>
+                            <h:selectOneRadio value="#{modifyUserPageBean.user.roleName}">
+                                            <c:selectItem itemValue="inactive_role" itemLabel="nieaktywny" />
+                                            <c:selectItem itemValue="user_role" itemLabel="użytkownik" />
+                                            <c:selectItem itemValue="admin_role" itemLabel="zarządca" />	   			
+                            </h:selectOneRadio>
+                        </td>	
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:commandButton value="Zatwierdź" action="#{modifyUserPageBean.modifyRole()}" />                            
+                            <h:commandButton value="Anuluj"  action="main" immediate="true"/>
+                        </td>
+                        <td class="no_more_style, error_message">
+                            <h:messages for="" />
+                        </td>
+                    </tr>
+                </table>
+        </h:form>                 
+</ui:define>
+    
+    <ui:define name="footer">
+        <ui:include src="../templates/FooterTemplate.xhtml"></ui:include>
+    </ui:define>
+
+</ui:composition>

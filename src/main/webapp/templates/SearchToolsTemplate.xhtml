@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <h2 class="nice_form_header_view">Wyszukaj według kryterium</h2>
+    <br />
+    <br />
+    <h:form>
+        <h:panelGrid columns="4">
+        <h:outputLabel value="Szukaj po imieniu:" />
+        <h:inputText id="firstNamePatttern" value="#{userListPageBean.firstNamePattern}" />
+        <h:outputLabel value="Szukaj po nazwisku:" />
+        <h:inputText id="lastNamePatttern" value="#{userListPageBean.lastNamePattern}" />
+        <h:outputLabel value="Szukaj po idetyfikatorze:"/>
+        <h:inputText id="nickPatttern" value="#{userListPageBean.nickPattern}" />
+        <h:outputLabel value="Szukaj po emailu:" />
+        <h:inputText id="emailPatttern" value="#{userListPageBean.emailPattern}" />
+        <h:commandButton value="Szukaj" action="#{userListPageBean.search()}" />
+        </h:panelGrid>
+    </h:form>
+    <h:dataTable id="accountList" value="#{userListPageBean.usersList}" var="account" >
+        <h:column id="first_name">
+            <f:facet name="header">Imię</f:facet>
+            <h:outputText value="#{account.firstName}" />
+        </h:column>
+        <h:column id="last_name">
+            <f:facet name="header">Nazwisko</f:facet>
+            <h:outputText value="#{account.lastName}" />
+        </h:column>
+        <h:column id="nickname">
+            <f:facet name="header">Identyfikator</f:facet>
+            <h:outputText value="#{account.nickName}" />
+        </h:column>
+        <h:column id="e_mail">
+            <f:facet name="header">E-mail</f:facet>
+            <h:outputText value="#{account.email}" />
+        </h:column>
+    </h:dataTable>
+    
+</ui:composition>

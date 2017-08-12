@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsf/core"
+                template="./../templates/MainTemplate.xhtml"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions"
+                >
+    
+    <ui:define name="top">
+        <ui:include src="../templates/MenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    
+    <ui:define name="submenu">
+        <ui:include src="../templates/SubMenuTemplate.xhtml"></ui:include>
+    </ui:define>
+<!--style="background-color: transparent; visibility: hidden;" -->
+    <ui:define name="content">
+        <table style="margin: 0px 0px 10px 4px;">
+            <tr style="border: 1px solid red">
+                <td style="border: 1px solid red">
+                    <span style="font-family: 'loveloblack'">Użytkownik:</span>&nbsp;&nbsp;#{modifyUserPageBean.user.nickName}
+                </td>
+            </tr>
+        </table>    
+        <h2 class="nice_form_header_view">Dane użytkownika</h2>
+            <h:form id="data_user_list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Imię</th>
+                                <th scope="col">Nazwisko</th>
+                                <th scope="col">Narodowość:</th>
+                                <th scope="col">Miasto zamieszkania</th>
+                                <th scope="col">Kod pocztowy</th>
+                                <th scope="col">Ulica</th>
+                                <th scope="col">Data urodzenia</th>
+                                <th scope="col">Numer telefonu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#{modifyUserPageBean.user.firstName}</td>
+                                <td>#{modifyUserPageBean.user.lastName}</td>
+                                <td>#{modifyUserPageBean.user.country}</td>
+                                <td>#{modifyUserPageBean.user.city}</td>
+                                <td>#{modifyUserPageBean.user.zipCode}</td>
+                                <td>#{modifyUserPageBean.user.street}</td>
+                                <td>#{of:formatDate(modifyUserPageBean.user.birthDate, 'dd.MM.yyyy')}</td>
+                                <td>#{modifyUserPageBean.user.phoneNumber}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </h:form>
+                
+                <h2 class="nice_form_header_view">Kwalifikacje</h2>
+                
+                <h:form id="qaul_list" >
+                    <h:dataTable value="#{qualificationsPageBean.user.qualificationsCollection}" var="qual">
+                            <h:column>
+                                <c:facet name="header">Język programowania</c:facet>
+                                    #{qual.programmingLanguage}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Frameworki</c:facet>
+                                    #{qual.frameworks}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Języki obce</c:facet>
+                                    #{qual.foreignLanguages}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Oprogramowanie narzędziowe</c:facet>
+                                    #{qual.software}
+                           </h:column>
+                           <h:column>
+                                <c:facet name="header">Dodatkowe umiejętności</c:facet>
+                                    #{qual.otherSkills}
+                           </h:column>
+                    </h:dataTable>
+                </h:form>
+                 
+                <h2 class="nice_form_header_view">Historia pracy</h2>
+                
+                <h:form id="hist_work_list" >
+                    <h:dataTable value="#{historyWorkPageBean.user.historyWorkCollection}" var="hist_work">
+                            <h:column>
+                                <c:facet name="header">Początek zatrudnienia</c:facet>
+                                    #{of:formatDate(hist_work.workBegin, 'dd.MM.yyyy')}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Koniec zatrudnienia</c:facet>
+                                    #{of:formatDate(hist_work.workEnd, 'dd.MM.yyyy')}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Miejsce odbywania pracy</c:facet>
+                                    #{hist_work.company}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Stanowisko</c:facet>
+                                    #{hist_work.position}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Rodzaj wykonywanej pracy</c:facet>
+                                    #{hist_work.characterOfWork}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Nabyte umiejętności</c:facet>
+                                    #{hist_work.acquiredSkills}
+                            </h:column>
+                    </h:dataTable>
+                </h:form>
+
+                <h2 class="nice_form_header_view">Wykształcenie</h2>
+                
+                <h:form id="edu_list" >
+                    <h:dataTable value="#{educationPageBean.user.educationCollection}" var="edu">
+                            <h:column>
+                                <c:facet name="header">Początek kształcenia</c:facet>
+                                    #{of:formatDate(edu.educationBegin, 'dd.MM.yyyy')}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Zakończenie kształcenia</c:facet>
+                                    #{of:formatDate(edu.educationEnd, 'dd.MM.yyyy')}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Nazwa uczelni</c:facet>
+                                    #{edu.nameOfSchool}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Rodzaj uczelni</c:facet>
+                                    #{edu.kindOfSchool}
+                           </h:column>
+                           <h:column>
+                                <c:facet name="header">Specjalizacja</c:facet>
+                                    #{edu.specialization}
+                                </h:column>
+                    </h:dataTable>
+                </h:form>
+
+                <h2 class="nice_form_header_view">Szkolenia</h2>
+                
+                <h:form id="train_list" >
+                    <h:dataTable value="#{trainingsPageBean.user.trainingsCollection}" var="train">
+                            <h:column>
+                                <c:facet name="header">Początek szkolenia</c:facet>
+                                    #{of:formatDate(train.trainingBegin, 'dd.MM.yyyy')}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Zakończenie szkolenia</c:facet>
+                                    #{of:formatDate(train.trainingEnd, 'dd.MM.yyyy')}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Zakres szkolenia</c:facet>
+                                    #{train.contentTraining}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Czas szkolenia</c:facet>
+                                    #{train.trainingTime}
+                           </h:column>
+                    </h:dataTable>
+                </h:form>
+    </ui:define>
+    
+    <ui:define name="footer">
+        <ui:include src="../templates/FooterTemplate.xhtml"></ui:include>
+    </ui:define>
+
+</ui:composition>

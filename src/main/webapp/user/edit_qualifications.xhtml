@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsf/core"
+                template="./../templates/MainTemplate.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="top">
+        <ui:include src="../templates/MenuTemplate.xhtml"></ui:include>
+    </ui:define>
+
+    <ui:define name="submenu">
+        <ui:include src="../templates/SubMenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    <ui:define name="content">
+        
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <h2 class="nice_form_header">Umiejętności pracownika: pogląd i edycja</h2>
+                        </td>
+                    </tr>
+                </table>
+                <ui:include src="../templates/WorkerInlineBoxTemplate.xhtml"></ui:include>
+                <h:form>
+                    <table class="color_table" style="float: left">
+                    <tr>
+                          <td>Język programowania :</td>
+                          <td>
+                              <h:inputText id="prog" value="#{qualificationsPageBean.programmingLanguage}" >
+                                  <c:validateLength minimum="2" maximum="64" />
+                              </h:inputText>
+                          </td>
+                    </tr>
+                    <tr>
+                          <td>Fremoworki :</td>
+                          <td>
+                              <h:inputText id="frame" value="#{qualificationsPageBean.frameworks}" >
+                                  <c:validateLength minimum="3" maximum="64" />
+                              </h:inputText>
+                          </td>
+                    </tr>
+                    <tr>
+                          <td>Języki obce :</td>
+                          <td>
+                              <h:inputText id="lang" value="#{qualificationsPageBean.foreignLanguages}" >
+                                  <c:validateLength minimum="3" maximum="32" />
+                              </h:inputText>
+                          </td>
+                    </tr>
+                    <tr>
+                          <td>Oprogramowanie narzędziowe :</td>
+                          <td>
+                              <h:inputText id="soft" value="#{qualificationsPageBean.software}" >
+                                  <c:validateLength minimum="5" maximum="64" />
+                              </h:inputText>
+                          </td>
+                    </tr>
+                        <tr>
+                          <td>Dodatkowe umiejętności :</td>
+                          <td>
+                              <h:inputText id="other_skill" value="#{qualificationsPageBean.otherSkills}" >
+                                  <c:validateLength minimum="0" maximum="512" />
+                              </h:inputText>
+                          </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                              <h:commandButton value="Dodaj" action="#{qualificationsPageBean.addQualifications()}" />
+                              <h:commandButton value="Wyczyść" action="editQualifications" />
+                        </td>
+                    </tr>
+                    <tr style="border: none">
+                        <td colspan="2" style="border: none" class="no_more_style, error_message">
+                            <h:message for="prog" errorStyle="color: red"/><br />
+                            <h:message for="frame" errorStyle="color: red"/><br />
+                            <h:message for="lang" errorStyle="color: red" /><br />
+                            <h:message for="soft" errorStyle="color: red" /><br />
+                            <h:message for="other_skill" errorStyle="color: red" />
+                        </td>
+                    </tr>
+                    </table>	  
+                </h:form>
+                <h:form>
+                    <h:dataTable style="float: right" value="#{qualificationsPageBean.qualificationsCollection}" var="qual">
+                            <h:column>
+                                <c:facet name="header">Język programowania</c:facet>
+                                    #{qual.programmingLanguage}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Frameworki</c:facet>
+                                    #{qual.frameworks}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Języki obce</c:facet>
+                                    #{qual.foreignLanguages}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Oprogramowanie narzędziowe</c:facet>
+                                    #{qual.software}
+                           </h:column>
+                           <h:column>
+                                <c:facet name="header">Dodatkowe umiejętności</c:facet>
+                                    #{qual.otherSkills}
+                           </h:column>
+                           <h:column>
+                                    <c:facet name="header">Usuń</c:facet>
+                                    <h:commandButton action="#{qualificationsPageBean.deleteQualifications()}" value="X" />
+                           </h:column>
+                    </h:dataTable>
+                </h:form>
+                        
+    </ui:define>
+    <ui:define name="footer">
+        <ui:include src="../templates/FooterTemplate.xhtml"></ui:include>
+    </ui:define>
+
+</ui:composition>

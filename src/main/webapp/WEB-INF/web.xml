@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>15</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>/faces/index.xhtml</welcome-file>
+    </welcome-file-list>
+    <security-constraint>
+        <display-name>Management System - Users</display-name>
+        <web-resource-collection>
+            <web-resource-name>User Realm</web-resource-name>
+            <description/>
+            <url-pattern>/faces/user/*</url-pattern>
+            <url-pattern>/faces/user/login_success.xhtml</url-pattern>
+            <!-- 
+            POTRZEBA WYKLUCZENIA "new_user.xhtml" - TYLKO "admin"
+            MOŻE TWORZYĆ PO ZALOGOWANIU NOWYCH UŻYTKOWNIKÓW
+            
+            ROZWIĄZANIE NA SKRÓTY: UKRYCIE WIDOKÓW
+            -->
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description>Users Pages</description>
+            <role-name>user_role</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>Management System - Admin</display-name>
+        <web-resource-collection>
+            <web-resource-name>Administrator Realm</web-resource-name>
+            <description/>
+            <url-pattern>/faces/admin/*</url-pattern>
+            <url-pattern>/faces/user/*</url-pattern>
+            <url-pattern>/faces/user/login_success.xhtml</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description>Admin Pages</description>
+            <role-name>admin_role</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <!-- BRAK AUTOMATYCZNEGO PRZEKIEROWANIA NA STRONĘ Z INFORMACJĄ -->
+        <display-name>Display - Inactive</display-name>
+        <web-resource-collection>
+            <web-resource-name>Inactive Realm</web-resource-name>
+            <description/>
+            <url-pattern>/faces/inactive_account.xhtml</url-pattern>
+            <url-pattern>/faces/user/login_success.xhtml</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description>Inactive Pages</description>
+            <role-name>inactive_role</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>SecurityRealm</realm-name>
+        <form-login-config>
+            <form-login-page>/faces/sign_in.xhtml</form-login-page>
+            <form-error-page>/faces/sign_err.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <description/>
+        <role-name>admin_role</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>user_role</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>inactive_role</role-name>
+    </security-role>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/faces/error/403.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/faces/error/404.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/faces/error/500.xhtml</location>
+    </error-page>
+    <error-page>
+        <exception-type>javax.persistence.OptimisticLockException</exception-type>
+        <location>/faces/error/OptimisticLockException.xhtml</location>
+    </error-page>
+</web-app>

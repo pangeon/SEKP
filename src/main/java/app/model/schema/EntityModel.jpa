@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings jaxb-support="false" id="_144588625327876" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:ns4="http://nbmodeler.java.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Qualifications" visibile="true" minimized="false" id="_144588625327879">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Integer" visibile="true" id="_144588625327886">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="qualifications"/>
+            </jpa:id>
+            <jpa:basic name="programmingLanguage" optional="true" attribute-type="String" visibile="true" id="_144588625327887">
+                <jpa:column name="programming_language" unique="false" nullable="true" insertable="true" updatable="true" table="qualifications" length="300"/>
+            </jpa:basic>
+            <jpa:basic name="frameworks" optional="true" attribute-type="String" visibile="true" id="_144588625327888">
+                <jpa:column name="frameworks" unique="false" nullable="true" insertable="true" updatable="true" table="qualifications" length="500"/>
+            </jpa:basic>
+            <jpa:basic name="foreignLanguages" optional="true" attribute-type="String" visibile="true" id="_144588625327889">
+                <jpa:column name="foreign_languages" unique="false" nullable="true" insertable="true" updatable="true" table="qualifications" length="300"/>
+            </jpa:basic>
+            <jpa:basic name="software" optional="true" attribute-type="String" visibile="true" id="_144588625327890">
+                <jpa:column name="software" unique="false" nullable="true" insertable="true" updatable="true" table="qualifications" length="500"/>
+            </jpa:basic>
+            <jpa:basic name="otherSkills" optional="true" attribute-type="String" visibile="true" id="_144588625327891">
+                <jpa:column name="other_skills" unique="false" nullable="true" insertable="true" updatable="true" table="qualifications" length="1200"/>
+            </jpa:basic>
+            <jpa:many-to-one name="userId" target-entity="Users" optional="false" primaryKey="false" connected-entity-id="_144588625327885" connected-attribute-id="_1445886253278129" visibile="true" id="_144588625327892">
+                <jpa:join-column name="user_id" referenced-column-name="user_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:table name="qualifications"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="HistoryWork" visibile="true" minimized="false" id="_144588625327880">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Integer" visibile="true" id="_144588625327893">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="history_work"/>
+            </jpa:id>
+            <jpa:basic name="workBegin" optional="true" attribute-type="java.util.Date" visibile="true" id="_144588625327894">
+                <jpa:column name="work_begin" unique="false" nullable="true" insertable="true" updatable="true" table="history_work"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="workEnd" optional="true" attribute-type="java.util.Date" visibile="true" id="_144588625327895">
+                <jpa:column name="work_end" unique="false" nullable="true" insertable="true" updatable="true" table="history_work"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="company" optional="true" attribute-type="String" visibile="true" id="_144588625327896">
+                <jpa:column name="company" unique="false" nullable="true" insertable="true" updatable="true" table="history_work" length="120"/>
+            </jpa:basic>
+            <jpa:basic name="position" optional="true" attribute-type="String" visibile="true" id="_144588625327897">
+                <jpa:column name="position" unique="false" nullable="true" insertable="true" updatable="true" table="history_work" length="120"/>
+            </jpa:basic>
+            <jpa:basic name="characterOfWork" optional="true" attribute-type="String" visibile="true" id="_144588625327898">
+                <jpa:column name="character_of_work" unique="false" nullable="true" insertable="true" updatable="true" table="history_work" length="300"/>
+            </jpa:basic>
+            <jpa:basic name="acquiredSkills" optional="true" attribute-type="String" visibile="true" id="_144588625327899">
+                <jpa:column name="acquired_skills" unique="false" nullable="true" insertable="true" updatable="true" table="history_work" length="500"/>
+            </jpa:basic>
+            <jpa:many-to-one name="userId" target-entity="Users" optional="false" primaryKey="false" connected-entity-id="_144588625327885" connected-attribute-id="_1445886253278130" visibile="true" id="_1445886253278100">
+                <jpa:join-column name="user_id" referenced-column-name="user_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:table name="history_work"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Education" visibile="true" minimized="false" id="_144588625327881">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Integer" visibile="true" id="_1445886253278101">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="education"/>
+            </jpa:id>
+            <jpa:basic name="educationBegin" optional="true" attribute-type="java.util.Date" visibile="true" id="_1445886253278102">
+                <jpa:column name="education_begin" unique="false" nullable="true" insertable="true" updatable="true" table="education"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="educationEnd" optional="true" attribute-type="java.util.Date" visibile="true" id="_1445886253278103">
+                <jpa:column name="education_end" unique="false" nullable="true" insertable="true" updatable="true" table="education"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="nameOfSchool" optional="true" attribute-type="String" visibile="true" id="_1445886253278104">
+                <jpa:column name="name_of_school" unique="false" nullable="true" insertable="true" updatable="true" table="education" length="300"/>
+            </jpa:basic>
+            <jpa:basic name="kindOfSchool" optional="true" attribute-type="String" visibile="true" id="_1445886253278105">
+                <jpa:column name="kind_of_school" unique="false" nullable="true" insertable="true" updatable="true" table="education" length="300"/>
+            </jpa:basic>
+            <jpa:basic name="specialization" optional="true" attribute-type="String" visibile="true" id="_1445886253278106">
+                <jpa:column name="specialization" unique="false" nullable="true" insertable="true" updatable="true" table="education" length="500"/>
+            </jpa:basic>
+            <jpa:many-to-one name="userId" target-entity="Users" optional="false" primaryKey="false" connected-entity-id="_144588625327885" connected-attribute-id="_1445886253278131" visibile="true" id="_1445886253278107">
+                <jpa:join-column name="user_id" referenced-column-name="user_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:table name="education"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Trainings" visibile="true" minimized="false" id="_144588625327883">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Integer" visibile="true" id="_1445886253278111">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="trainings"/>
+            </jpa:id>
+            <jpa:basic name="trainingBegin" optional="true" attribute-type="java.util.Date" visibile="true" id="_1445886253278112">
+                <jpa:column name="training_begin" unique="false" nullable="true" insertable="true" updatable="true" table="trainings"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="trainingEnd" optional="true" attribute-type="java.util.Date" visibile="true" id="_1445886253278113">
+                <jpa:column name="training_end" unique="false" nullable="true" insertable="true" updatable="true" table="trainings"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="contentTraining" optional="true" attribute-type="String" visibile="true" id="_1445886253278114">
+                <jpa:column name="content_training" unique="false" nullable="true" insertable="true" updatable="true" table="trainings" length="500"/>
+            </jpa:basic>
+            <jpa:basic name="trainingTime" optional="true" attribute-type="Short" visibile="true" id="_1445886253278115">
+                <jpa:column name="training_time" unique="false" nullable="true" insertable="true" updatable="true" table="trainings"/>
+            </jpa:basic>
+            <jpa:many-to-one name="userId" target-entity="Users" optional="false" primaryKey="false" connected-entity-id="_144588625327885" connected-attribute-id="_1445886253278133" visibile="true" id="_1445886253278116">
+                <jpa:join-column name="user_id" referenced-column-name="user_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:table name="trainings"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Workers" visibile="true" minimized="false" id="_144588625327884">
+        <jpa:attributes>
+            <jpa:id name="userId" attribute-type="Integer" visibile="true" id="_1445886253278117">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="workers"/>
+            </jpa:id>
+            <jpa:basic name="firstName" optional="false" attribute-type="String" visibile="true" id="_1445886253278118">
+                <jpa:column name="first_name" unique="false" nullable="false" insertable="true" updatable="true" table="workers" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="lastName" optional="false" attribute-type="String" visibile="true" id="_1445886253278119">
+                <jpa:column name="last_name" unique="false" nullable="false" insertable="true" updatable="true" table="workers" length="80"/>
+            </jpa:basic>
+            <jpa:basic name="birthDate" optional="false" attribute-type="java.util.Date" visibile="true" id="_1445886253278120">
+                <jpa:column name="birth_date" unique="false" nullable="false" insertable="true" updatable="true" table="workers"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="country" optional="false" attribute-type="String" visibile="true" id="_1445886253278121">
+                <jpa:column name="country" unique="false" nullable="false" insertable="true" updatable="true" table="workers" length="120"/>
+            </jpa:basic>
+            <jpa:basic name="city" optional="false" attribute-type="String" visibile="true" id="_1445886253278121">
+                <jpa:column name="city" unique="false" nullable="false" insertable="true" updatable="true" table="workers" length="120"/>
+            </jpa:basic>
+            <jpa:basic name="zip-code" optional="false" attribute-type="String" visibile="true" id="_1445886253278121">
+                <jpa:column name="zip-code" unique="false" nullable="false" insertable="true" updatable="true" table="workers" length="120"/>
+            </jpa:basic>
+            <jpa:basic name="street" optional="false" attribute-type="String" visibile="true" id="_1445886253278121">
+                <jpa:column name="street" unique="false" nullable="false" insertable="true" updatable="true" table="workers" length="120"/>
+            </jpa:basic>
+            <jpa:basic name="phoneNumber" optional="false" attribute-type="String" visibile="true" id="_1445886253278122">
+                <jpa:column name="phone_number" unique="false" nullable="false" insertable="true" updatable="true" table="workers" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="activationDate" optional="true" attribute-type="java.util.Date" visibile="true" id="_1445886253278123">
+                <jpa:column name="activation_date" unique="false" nullable="true" insertable="true" updatable="true" table="workers"/>
+            </jpa:basic>
+        </jpa:attributes>
+        <jpa:table name="workers"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Users" visibile="true" minimized="false" id="_144588625327885">
+        <jpa:attributes>
+            <jpa:id name="userId" attribute-type="Integer" visibile="true" id="_1445886253278125">
+                <jpa:column name="user_id" unique="false" nullable="false" insertable="true" updatable="true" table="users"/>
+            </jpa:id>
+            <jpa:basic name="login" optional="false" attribute-type="String" visibile="true" id="_1445886253278126">
+                <jpa:column name="login" unique="false" nullable="false" insertable="true" updatable="true" table="users" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="nickName" optional="false" attribute-type="String" visibile="true" id="_1445886253278126">
+                <jpa:column name="nickname" unique="false" nullable="false" insertable="true" updatable="true" table="users" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="password" optional="false" attribute-type="String" visibile="true" id="_1445886253278127">
+                <jpa:column name="password" unique="false" nullable="false" insertable="true" updatable="true" table="users" length="50"/>
+            </jpa:basic>
+            <jpa:basic name="email" optional="false" attribute-type="String" visibile="true" id="_1445886253278128">
+                <jpa:column name="email" unique="false" nullable="false" insertable="true" updatable="true" table="users" length="40"/>
+            </jpa:basic>
+            <jpa:basic name="activationDate" optional="true" attribute-type="String" visibile="true" id="_1445886253278123">
+                <jpa:column name="activation_date" unique="false" nullable="true" insertable="true" updatable="true" table="users"/>
+            </jpa:basic>
+            <jpa:one-to-many name="qualificationsCollection" target-entity="Qualifications" mapped-by="userId" connected-entity-id="_144588625327879" connected-attribute-id="_144588625327892" visibile="true" id="_1445886253278129"/>
+            <jpa:one-to-many name="historyWorkCollection" target-entity="HistoryWork" mapped-by="userId" connected-entity-id="_144588625327880" connected-attribute-id="_1445886253278100" visibile="true" id="_1445886253278130"/>
+            <jpa:one-to-many name="educationCollection" target-entity="Education" mapped-by="userId" connected-entity-id="_144588625327881" connected-attribute-id="_1445886253278107" visibile="true" id="_1445886253278131"/>
+            <jpa:one-to-many name="trainingsCollection" target-entity="Trainings" mapped-by="userId" connected-entity-id="_144588625327883" connected-attribute-id="_1445886253278116" visibile="true" id="_1445886253278133"/>
+        </jpa:attributes>
+        <jpa:table name="users">
+            <jpa:unique-constraint>
+                <jpa:column-name>email</jpa:column-name>
+            </jpa:unique-constraint>
+            <jpa:unique-constraint>
+                <jpa:column-name>login</jpa:column-name>
+            </jpa:unique-constraint>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:diagram id="_144588625327877">
+        <plane elementRef="_144588625327876" id="_144588625327878_p">
+            <shape elementRef="_144588625327879" id="_144588625327879_gui">
+                <Bounds x="581.0" y="170.0" width="181.0" height="210.0"/>
+            </shape>
+            <shape elementRef="_144588625327880" id="_144588625327880_gui">
+                <Bounds x="801.0" y="121.0" width="167.0" height="231.0"/>
+            </shape>
+            <shape elementRef="_144588625327881" id="_144588625327881_gui">
+                <Bounds x="1012.0" y="223.0" width="152.0" height="210.0"/>
+            </shape>
+            <shape elementRef="_144588625327883" id="_144588625327883_gui">
+                <Bounds x="676.0" y="445.0" width="149.0" height="189.0"/>
+            </shape>
+            <shape elementRef="_144588625327884" id="_144588625327884_gui">
+                <Bounds x="195.0" y="213.0" width="146.0" height="260.0"/>
+            </shape>
+            <shape elementRef="_144588625327885" id="_144588625327885_gui">
+                <Bounds x="341.0" y="213.0" width="185.0" height="273.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>

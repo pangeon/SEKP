@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                    xmlns:h="http://java.sun.com/jsf/html"
+                    xmlns:f="http://java.sun.com/jsp/jstl/functions"
+                    xmlns="http://www.w3.org/1999/xhtml"
+                    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">              
+        <ul style="display: inline-block; margin-right: 65%;">
+            <h:form>
+                <!-- style="background-color: forestgreen"-->
+                <c:if test="#{loginBean.checkLaws() != 0}">
+                    <li class="inline" style="background-color: forestgreen">
+                    <h:commandLink style="color: white" value="Wyloguj" action="#{loginBean.logout()}" disabled="false" />
+                    </li>
+                </c:if>
+
+                <c:if test="#{loginBean.checkLaws() == 0}">
+                    <li class="inline" style="background-color: forestgreen">
+                    <h:outputLink style="color: white" value="/System/faces/user/login_success.xhtml" disabled="false" >
+                    Zaloguj</h:outputLink></li>
+                </c:if>
+            </h:form>
+        </ul>
+        <c:if test="#{loginBean.checkLaws() != 0}">
+            <table style="float: right; font-size: 14px;">
+                <tr>
+                    <span style="font-size: 14px; font-family: 'ubuntulight';">
+                        Zalogowany jako: <h:outputText style="color: gold" value="#{loginBean.login}" />
+                    </span>
+                </tr>
+                <tr>|</tr>
+
+                <tr>
+                        Czas do końca sesji: 
+                        <iframe scrolling="no" src="../resources/js/clock.html"></iframe>
+                </tr>
+
+            </table>
+        </c:if>
+    </ui:composition>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ul>
+        <li class="inline" style="background-color: forestgreen"><h:outputLink value="/System/faces/index.xhtml">Strona Główna</h:outputLink></li>
+        <c:if test="#{loginBean.checkLaws() == 0 || loginBean.checkLaws() == 3}">
+            <li class="inline" style="background-color: forestgreen">
+            <h:outputLink value="/System/faces/new_user.xhtml">Rejestruj</h:outputLink></li>
+        </c:if>
+        <c:if test="#{loginBean.checkLaws() != 0}">
+            <li class="inline" style="background-color: forestgreen">
+            <h:outputLink value="/System/faces/user/account.xhtml">Moje konto</h:outputLink></li> 
+            <li class="inline" style="background-color: forestgreen">
+            <h:outputLink value="/System/faces/user/simple_list.xhtml">Podgląd pracowników</h:outputLink></li>
+        </c:if>
+        <c:if test="#{loginBean.checkLaws() == 3}">
+            <li class="inline">
+            <h:outputLink value="/System/faces/admin/list.xhtml">Panel administratora</h:outputLink></li>
+        </c:if>
+        
+    </ul>
+</ui:composition>

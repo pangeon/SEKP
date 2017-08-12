@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsf/core"
+                template="./../templates/MainTemplate.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions">
+
+    <ui:define name="top">
+        <ui:include src="../templates/MenuTemplate.xhtml"></ui:include>
+    </ui:define>
+
+    <ui:define name="submenu">
+        <ui:include src="../templates/SubMenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    <ui:define name="content">
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <h2 class="nice_form_header">Historia pracy: pogląd i edycja</h2>
+                        </td>
+                    </tr>
+                </table>
+                <ui:include src="../templates/WorkerInlineBoxTemplate.xhtml"></ui:include>
+                <h:form>
+                    <table class="color_table" style="float: left">
+                    <tr>
+                        <td>
+                            Początek zatrudnienia :<br />
+                            <span style="font-size: 11px; color: red">(format: dd.MM.yyyy)</span>
+                        </td>
+                          <td>
+                              <h:inputText id="begin_work" value="#{historyWorkPageBean.workBegin}" >
+                                   <f:convertDateTime dateStyle="short" pattern="dd.MM.yyyy"/>
+                              </h:inputText>
+                          </td>
+                    </tr>
+                    <tr>
+                          <td>
+                              Koniec zatrudnienia :<br />
+                              <span style="font-size: 11px; color: red">(format: dd.MM.yyyy)</span>
+                          </td>
+                          <td>
+                              <h:inputText id="end_work" value="#{historyWorkPageBean.workEnd}" >
+                                  <f:convertDateTime dateStyle="short" pattern="dd.MM.yyyy"/>
+                              </h:inputText>
+                          </td>
+                    </tr>
+                    <tr>
+                          <td>Miejsce odbywania pracy:<br />
+                              <span style="font-size: 11px; color: red">(firma, instytucja)</span>
+                          </td>
+                          <td>
+                              <h:inputText id="comp" value="#{historyWorkPageBean.company}" >
+                                  <c:validateLength minimum="3" maximum="64" />
+                              </h:inputText>
+                          </td>
+                    </tr>
+                    <tr>
+                          <td>Stanowisko :</td>
+                          <td>
+                              <h:inputText id="position" value="#{historyWorkPageBean.position}" >
+                                  <c:validateLength minimum="4" maximum="64" />
+                              </h:inputText>
+                          </td>
+                    </tr>
+                        <tr>
+                          <td>Rodzaj wykonywanej pracy : <br />
+                              <span style="font-size: 11px; color: red">(zakres obowiązków na danym stanowisku)</span>
+                          </td>
+                          <td><h:inputTextarea id="kind_work" value="#{historyWorkPageBean.characterOfWork}" >
+                                  <c:validateLength minimum="8" maximum="512" />
+                              </h:inputTextarea>
+                          </td>
+                        </tr>
+                    <tr>
+                    <tr>
+                        <td>Nabyte umiejętności :</td>
+                        <td>
+                            <h:inputTextarea id="skill_work" value="#{historyWorkPageBean.acquiredSkills}" >
+                                  <c:validateLength minimum="8" maximum="512" />
+                            </h:inputTextarea>
+                        </td>
+                    </tr>
+                        <td colspan="2">
+                            <h:commandButton value="Dodaj" action="#{historyWorkPageBean.addHistoryWork()}" />
+                            <h:commandButton value="Wyczyść" action="editHistoryWork" />
+                        </td>
+                    </tr>
+                    <tr style="border: none">
+                        <td colspan="2" style="border: none" class="no_more_style, error_message">
+                            <h:message for="begin_work" errorStyle="color: red"/><br />
+                            <h:message for="end_work" errorStyle="color: red"/><br />
+                            <h:message for="comp" errorStyle="color: red" /><br />
+                            <h:message for="position" errorStyle="color: red" /><br />
+                            <h:message for="kind_work" errorStyle="color: red" /><br />
+                            <h:message for="skill_work" errorStyle="color: red" />
+                        </td>
+                    </tr>
+                    </table>	  
+                </h:form>
+                <h:form>
+                    <h:dataTable style="float: right" value="#{historyWorkPageBean.myHistoryWorkCollection}" var="hist_work">
+                            <h:column>
+                                <c:facet name="header">Początek zatrudnienia</c:facet>
+                                    #{of:formatDate(hist_work.workBegin, 'dd.MM.yyyy')}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Koniec zatrudnienia</c:facet>
+                                    #{of:formatDate(hist_work.workEnd, 'dd.MM.yyyy')}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Miejsce odbywania pracy</c:facet>
+                                    #{hist_work.company}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Stanowisko</c:facet>
+                                    #{hist_work.position}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Rodzaj wykonywanej pracy</c:facet>
+                                    #{hist_work.characterOfWork}
+                            </h:column>
+                            <h:column>
+                                <c:facet name="header">Nabyte umiejętności</c:facet>
+                                    #{hist_work.acquiredSkills}
+                            </h:column>
+                            <h:column>
+                                    <c:facet name="header">Usuń</c:facet>
+                                    <h:commandButton action="#{historyWorkPageBean.deleteHistoryWork()}" value="X" />
+                           </h:column>
+                    </h:dataTable>
+                </h:form>        
+    </ui:define>
+    <ui:define name="footer">
+        <ui:include src="../templates/FooterTemplate.xhtml"></ui:include>
+    </ui:define>
+
+</ui:composition>

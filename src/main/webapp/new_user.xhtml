@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsf/core"
+                template="./templates/MainTemplate.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsp/jstl/core">
+    
+    <ui:define name="top">
+        <ui:include src="templates/MenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    
+    <ui:define name="submenu">
+        <ui:include src="templates/SubMenuTemplate.xhtml"></ui:include>
+    </ui:define>
+<!--style="background-color: transparent; visibility: hidden;" -->
+    <ui:define name="content">
+        <h2>Formularz rejestracji w systemie</h2>
+        <h:form id="add_user">
+            <table>
+                <tr>
+                    <td>
+                <span class="star">*</span>
+                Login: <h:inputText id="reg_login" value="#{newUserPageBean.user.login}" >
+                            <c:validateLength minimum="6" maximum="20" />
+                       </h:inputText>
+                    </td>
+                    <td class="no_more_style, error_message">
+                        <h:message for="reg_login" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                <span class="star">*</span>
+                Identyfikator (nick): <h:inputText id="nick_name" value="#{newUserPageBean.user.nickName}" >
+                            <c:validateLength minimum="6" maximum="16" />
+                       </h:inputText>
+                    </td>
+                    <td class="no_more_style, error_message">
+                        <h:message for="nick_name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                <span class="star">*</span>
+                E-mail: <h:inputText id="reg_email" value="#{newUserPageBean.user.email}" >
+                            <c:validateLength minimum="7" maximum="40" />
+                            <c:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                        </h:inputText>
+                    </td>
+                    <td class="no_more_style, error_message">
+                        <h:message for="reg_email" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                <span class="star">*</span>
+                Hasło: <h:inputSecret id="reg_password" value="#{newUserPageBean.user.password}" >
+                            <c:validateLength minimum="8" maximum="40" />
+                       </h:inputSecret>
+                    </td>
+                    <td class="no_more_style, error_message">
+                        <h:message for="reg_password" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>                 
+                <span class="star">*</span>
+                Powtórz hasło: <h:inputSecret id="reg_again_pass" value="#{newUserPageBean.againPassword}" >
+                                    <c:validateLength minimum="8" maximum="40" />
+                               </h:inputSecret>
+                    </td>
+                    <td class="no_more_style, error_message">
+                        <h:message for="reg_again_pass" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h:commandButton value="Anuluj" action="main" immediate="true" />
+                        <h:commandButton id="werifity_pass" value="Dodaj użytkownika" action="#{newUserPageBean.addUserAndCheckPasswords()}"/>              
+                    </td>
+                    <td class="no_more_style, error_message">
+                        <h:message for="" /> 
+                    </td>
+                </tr>
+            </table>            
+    </h:form>     
+</ui:define>
+    
+    <ui:define name="footer">
+        <ui:include src="templates/FooterTemplate.xhtml"></ui:include>
+    </ui:define>
+
+</ui:composition>

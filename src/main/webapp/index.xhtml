@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                template="./templates/MainTemplate.xhtml">
+    <ui:define name="top">
+        <ui:include src="templates/MenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    
+    <ui:define name="submenu">
+        <ui:include src="templates/SubMenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    <h2>Mapa strony</h2>
+    <ui:define name="content">
+
+        <div class="main_page_content">  
+            <h1 class="main_page">1. Założenia</h1>
+            <p class="main_page_paragraph">
+            Aplikacja ma za zadanie rozwiązać problem magazynowania,
+            wyszukiwania i agregacji danych biznesowych pracowników firmy IT. Strona www z prostym i
+            przyjemnym widokiem to możliwość rezygnacji z konieczności przechowywania wielu
+            dokumentów CV o niejednoznacznej formie. Aplikacja ułatwia
+            organizację, korzysta z jednolitego szablonu, pozwala na szybką edycję danych.
+            </p>
+            <h1 class="main_page">2. Opis</h1>
+            <p class="main_page_paragraph">
+            Każdy z formularzy prezentuje umiejętności i doświadczenie pracownika:
+            <br />
+            <br />
+            <strong>Kwalifikacje:</strong> widok prezentuje grupę zdolności związanych z danym językiem
+            programowania, technologią. Przykładowo pracownik znający C++ zajmujący się testowaniem
+            oprogramowania, posługuje się w zakresie Visual C++ dobrze w języku niemieckim; a
+            jeśli chodzi o JAVE EE i JSP woli angielski, jednak w tym zakresie pracuje nad
+            projektowaniem widoku aplikacji. Dodatkowo mamy nazwy narzędzi służącym pracownikom
+            IT - np. NetBeans
+            <br />
+            <br />
+            <strong>Historia Pracy:</strong> widok prezentuje w przedziałach czasowych okresy
+            pojedynczego zatrudnienia w danej instytucji, firmie. Opisuje rodzaj, zakres wykonywanej
+            pracy na konkretnym stanowisku oraz prezentuje zdobyt umiejętności.
+            <br />
+            <br />
+            <strong>Wykształcenie:</strong> widok prezentuje listę ukończonych szkół, uczelni
+            które pozwoliły uzyskać specjalizacje w wybranych zakresie wiedzy.
+            <br />
+            <br />
+            <strong>Szkolenia:</strong> widok udostępnia listę ukończonych szkoleń, podaje i zakres
+            oraz określa przedział czasowy w godzinach.
+            </p>
+            <h1 class="main_page">3. Wyszukiwanie i dostęp do danych</h1>
+            <p class="main_page_paragraph">
+            W moim programie o sposobie wyszukiwania decyduje poziom dostępu, 
+            a tym samym możliwości obejrzenia konkretnych danych. 
+            Tylko administratorzy będą mogli wyszukiwać użytkowników po loginie, adresie e-mail czy roli 
+            (dane dostępne w panelu administratora). Użytkownicy nie otrzymają możliwości wyszukiwania danych systemowych, 
+            gdyż te nie są im udostępnione, ale będą mogli skorzystać z:
+            <br />
+            <br />
+            <strong>Szybkiego wyszukiwania pracowników:</strong> 
+            po imieniu, nazwisku, identyfikatorze
+            <br />
+            <br />
+            <strong>Zaawansowanego wyszukiwania według kwalifikacji:</strong>
+            w bazie dysponujemy całymi zestawami danych biznesowych w postaci kolekcji. 
+            Oferuje w mojej aplikacji możliwość filtrowania danych z widoków historia pracy, 
+            edukacja, ukończone szkolenia, kwalifikacje. 
+            Po odbiorze danych użytkownika z formularzy, które odwołują się tylko do wybranych kolumn z tabel, 
+            następuje filtrowanie (każdej z kolekcji osobno). 
+            Wyniki wyświetlone zostają w wielu tabelach osobno. 
+            Każdy wiersz odwołujący się do danych z kolekcji odsyła do widoku pełnych danych użytkownika.
+            </p>
+        </div>
+    </ui:define>
+    
+    <ui:define name="footer">
+        <ui:include src="templates/FooterTemplate.xhtml"></ui:include>
+    </ui:define>
+
+</ui:composition>

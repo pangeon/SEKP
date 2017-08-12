@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    
+    <application>
+        <locale-config>
+            <default-locale>pl</default-locale>
+            <supported-locale>pl</supported-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>i18n.messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+        <message-bundle>
+            i18n.jsf_messages
+        </message-bundle>
+    </application>
+          
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <!-- guest (osoba bez roli) -->
+        <navigation-case>              
+            <redirect />
+            <from-outcome>main</from-outcome>
+            <to-view-id>index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>              
+            <redirect />
+            <from-outcome>addUser</from-outcome>
+            <to-view-id>new_user.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>              
+            <redirect />
+            <from-outcome>errorPage</from-outcome>
+            <to-view-id>error_page.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>              
+            <redirect />
+            <from-outcome>confirmPanel</from-outcome>
+            <to-view-id>confirm.xhtml</to-view-id>
+        </navigation-case>
+        
+        <!-- user --> 
+        <navigation-case>              
+            <redirect />
+            <from-outcome>DataUserList</from-outcome>
+            <to-view-id>/user/data_user_list.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>              
+            <redirect />
+            <from-outcome>editAuthData</from-outcome>
+            <to-view-id>/user/edit_auth_data.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>              
+            <redirect />
+            <from-outcome>account</from-outcome>
+            <to-view-id>/user/account.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>              
+            <redirect />
+            <from-outcome>editAccount</from-outcome>
+            <to-view-id>/user/edit_account.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>              
+            <redirect />
+            <from-outcome>editEducation</from-outcome>
+            <to-view-id>/user/edit_education.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>              
+            <redirect />
+            <from-outcome>editQualifications</from-outcome>
+            <to-view-id>/user/edit_qualifications.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>              
+            <redirect />
+            <from-outcome>editHistoryWork</from-outcome>
+            <to-view-id>/user/edit_history_work.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>              
+            <redirect />
+            <from-outcome>editTrainings</from-outcome>
+            <to-view-id>/user/edit_trainings.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>              
+            <redirect />
+            <from-outcome>advanceSearch</from-outcome>
+            <to-view-id>/user/advance_search.xhtml</to-view-id>
+        </navigation-case>
+        
+        <!-- admin -->
+        <navigation-case>             
+            <redirect />
+            <from-outcome>list</from-outcome>
+            <to-view-id>/admin/list.xhtml</to-view-id>
+        </navigation-case>       
+        <navigation-case>              
+            <redirect />
+            <from-outcome>editUser</from-outcome>
+            <to-view-id>/admin/edit_user.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>              
+            <redirect />
+            <from-outcome>roleManager</from-outcome>
+            <to-view-id>/admin/user_manager.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>              
+            <redirect />
+            <from-outcome>list</from-outcome>
+            <to-view-id>/admin/list.xhtml</to-view-id>
+        </navigation-case>
+        <!-- inactive (użytkownik z rolą nieaktywny) -->
+        <navigation-case>
+            <redirect />
+            <from-outcome>inactive</from-outcome>
+            <to-view-id>inactive_account.xhtml</to-view-id>
+        </navigation-case>
+        
+    </navigation-rule>
+    
+</faces-config>

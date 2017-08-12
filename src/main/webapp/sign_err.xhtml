@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsf/core"
+                template="templates/MainTemplate.xhtml">
+    
+    <ui:define name="top">
+        <ui:include src="templates/MenuTemplate.xhtml"></ui:include>
+    </ui:define>
+    
+    <ui:define name="submenu">
+        <ui:include src="templates/SubMenuTemplate.xhtml"></ui:include>
+    </ui:define>
+
+    <ui:define name="content">           
+        <form method="POST" action="j_security_check">
+            <table>
+                <tr>
+                    <td class="no_more_style">
+                        <h2 class="h2_error_message">Nieudana próba logowania</h2> 
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="left_side_input">Nazwa użytkownika:</span>
+                        <input type="text" name="j_username" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="left_side_input">Hasło:</span>
+                        <input type="password" name="j_password" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Zaloguj" />
+                        <input type="submit" value="Anuluj" disabled="true" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </ui:define>
+    
+    <ui:define name="footer">
+        <ui:include src="templates/FooterTemplate.xhtml"></ui:include>
+    </ui:define>
+
+</ui:composition>
