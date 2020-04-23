@@ -2,6 +2,126 @@
 
 ---
 
+##### INSTALL JDK
+Glassfish 5 using Java version < 8. When you can show installed JDK on your system, you must pass command:
+
+```cmd
+update-java-alternatives -l
+```
+
+If you don't have any version JDK lower nine, you must install it.
+You may use this package: [IBM Java(TM) Development Kit (JDK) 8.0](https://ubuntu.pkgs.org/18.04/canonical-partner-i386/ibm-java80-jdk_8.0.6.5-0ubuntu1_i386.deb.html)    
+ 
+
+
+##### INSTALL XAMPP
+1) Download files from: [XAMPP FOR LINUX](https://www.apachefriends.org/xampp-files/7.4.4/xampp-linux-x64-7.4.4-1-installer.run)
+
+Packages include: 
+* Apache 
+* MariaDB/MySQL 
+* PHP
+* phpMyAdmin
+
+a) To start XAMPP simply call this command:
+
+```cmd
+sudo /opt/lampp/lampp start
+```
+
+b) To stop XAMPP simply call this command:
+
+```cmd
+sudo /opt/lampp/lampp stop
+```
+
+c) Also, note that there is a graphical tool that you can use to manage your 
+servers easily. You can start this tool with the following commands:
+
+```cmd
+cd /opt/lampp
+sudo ./manager-linux.run (or manager-linux-x64.run)
+```
+
+d) The MySQL administrator (root) has no password. 
+To modify most of the security simply call the following command:
+
+```cmd
+sudo /opt/lampp/lampp security
+```
+
+More information you can search on page: 
+[LINUX FAQ](https://www.apachefriends.org/faq_linux.html)
+
+##### INSTALL GLASSFISH SERWER VIA INTELLIJ IDEA
+
+###### INSTALL APP SERWER ON LINUX
+
+* Download files from page: 
+[ECLIPSE FOUNDATION](https://www.eclipse.org/downloads/download.php?file=/glassfish/glassfish-5.1.0.zip)
+
+* Copy archive for localtion /opt and exact here. Full serwer path is /opt/glassfish5
+
+* Change permissions for example:
+
+```cmd
+sudo chmod 777 opt/glasfish5 -R
+```
+
+You can read more in: 
+[GlassFish Server Open Source EditionInstallation Guide](https://javaee.github.io/glassfish/doc/5.0/installation-guide.pdf)   
+
+###### CONFIG GLASSFISH ON IDE
+
+1) Open the Settings / Preferences dialog by pressing Ctrl+Alt+S or 
+by choosing File | Settings for Windows and Linux or IntelliJ IDEA | 
+Preferences for macOS, and click Application Servers under Build, Execution, 
+Deployment. 
+
+2) On the Application Servers page that opens, click icons general add above 
+the central pane and choose GlassFish Server from the list.
+
+3) In the right-hand pane, specify the GlassFish Server installation folder 
+in the GlassFish Home field. Type the path to it manually or click the 
+Browse button and choose the installation folder in the dialog box that opens. 
+IntelliJ IDEA detects the version of the application server and automatically 
+fills in the Name field as follows: GlassFish <version>. In our example it 
+is GlassFish 5.1.0.
+
+More information you can search on producer page: 
+[JETBRAINS](https://www.jetbrains.com/help/idea/creating-and-running-your-first-restful-web-service.html#792f4775)
+
+##### RUNNING GLASSFISH SERWER ADMIN PAGE IN BROWSER
+
+1) You must use Java lower than eight version. Additional running configuration you can find 
+in /opt/glassfish5/glasfish/config/. Whole configuration is write in file asenv.conf
+
+```cmd
+AS_IMQ_LIB="../../mq/lib"
+AS_IMQ_BIN="../../mq/bin"
+AS_CONFIG="../config"
+AS_INSTALL=".."
+AS_DEF_DOMAINS_PATH="../domains"
+AS_DEF_NODES_PATH="../nodes"
+AS_DERBY_INSTALL="../../javadb"
+```
+
+Add one lines, which describe jdk location, for example:
+
+```cmd
+AS_JAVA="/usr/lib/jvm/ibm-java80-jdk-x86_64"
+```
+
+2) Run/stop Glassfish serwer:
+
+```bash
+bash /opt/glassfish5/bin/asadmin start-domain
+bash /opt/glassfish5/bin/asadmin stop-domain
+```
+     
+   
+---
+
 ### DEPLOYMENT GUIDE
 
 ---
